@@ -1,0 +1,1 @@
+ /home/kavia/workspace/code-generation/flutter-mobile-app-framework-183379-183388/flutter_frontend/.dart_tool/flutter_build/d49b663396145c0fdda7302e580f7544/native_assets.json: 
