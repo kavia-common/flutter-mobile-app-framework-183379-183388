@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_frontend/main.dart';
+import 'package:flutter_frontend/app.dart';
+import 'package:flutter_frontend/theme/app_theme.dart';
 
 void main() {
-  testWidgets('App generation message displayed', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+  testWidgets('App renders Home screen and Ocean theme applies', (WidgetTester tester) async {
+    await tester.pumpWidget(const App());
+    await tester.pumpAndSettle();
 
-    expect(find.text('flutter_frontend App is being generated...'), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
+    // App bar title defaults to "Ocean App" via .env fallback
+    expect(find.text('Ocean App'), findsOneWidget);
 
-  testWidgets('App bar has correct title', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
-
-    expect(find.text('flutter_frontend'), findsOneWidget);
+    // Theme primary color applied
+    final ThemeData theme = Theme.of(tester.element(find.byType(MaterialApp)));
+    expect(theme.colorScheme.primary.value, equals(0xFF2563EB));
   });
 }
